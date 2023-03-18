@@ -16,6 +16,9 @@ type Job struct {
 	StartDate   time.Time `yaml:"start_date"`
 	EndDate     time.Time `yaml:"end_date"`
 }
+type Experience struct {
+	Jobs []Job `yaml:"experience"`
+}
 
 func main() {
 
@@ -34,6 +37,10 @@ func main() {
 		EndDate:     time.Date(2023, time.March, 0, 0, 0, 0, 0, austin),
 	}
 
+	jobs := Experience{}
+
+	jobs.Jobs = append(jobs.Jobs, job)
+
 	pdf := fpdf.New("P", "mm", "A4", "")
 	pdf.AddPage()
 	pdf.SetFont("Arial", "B", 16)
@@ -44,11 +51,18 @@ func main() {
 		panic(err2.Error())
 	}
 
-	theYaml, err3 := yaml.Marshal(job)
+	theYaml, err3 := yaml.Marshal(jobs)
 
 	if err3 != nil {
 		panic(err3.Error())
 	}
 
 	fmt.Println(string(theYaml))
+
+	var theExperience Experience
+	err4 := yaml.Unmarshal(theYaml, &theExperience)
+	if err4 != nil {
+		panic(err4.Error())
+	}
+
 }
