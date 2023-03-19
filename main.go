@@ -9,12 +9,14 @@ import (
 )
 
 type Job struct {
-	Title       string    `yaml:"title"`
-	Company     string    `yaml:"company"`
-	Location    string    `yaml:"location"`
-	Description string    `yaml:"description"`
-	StartDate   time.Time `yaml:"start_date"`
-	EndDate     time.Time `yaml:"end_date"`
+	Title        string    `yaml:"title"`
+	Company      string    `yaml:"company"`
+	Location     string    `yaml:"location"`
+	Description  string    `yaml:"description"`
+	StartDate    time.Time `yaml:"start_date"`
+	EndDate      time.Time `yaml:"end_date"`
+	Skills       []string  `yaml:"skills"`
+	SkillDomains []string  `yaml:"skill_domains"`
 }
 type Experience struct {
 	Jobs []Job `yaml:"experience"`
@@ -32,10 +34,29 @@ func main() {
 		Title:       "Principal Software Architect",
 		Company:     "Switch",
 		Location:    "Austin, TX",
-		Description: "Transition one billing and account management system into multiple systems.",
+		Description: "Transition one billing and account management system into multiple systems. Maintain and extend custom, in-house billing and account management systems in HTML, JavaScript, Perl/Moose, and MySQL. Estimate development effort for feature designs. Implement new feature designs and assist with testing. Mentor junior developer through code review and direction.",
 		StartDate:   time.Date(2022, time.January, 0, 0, 0, 0, 0, austin),
 		EndDate:     time.Date(2023, time.March, 0, 0, 0, 0, 0, austin),
 	}
+
+	skills := []string{"Computer Programming", "Software Design", "Leadership", "Mentoring"}
+
+	job.Skills = skills
+
+	skillDomains := []string{
+		"Applications",
+		"Back-end Services",
+		"Salesforce",
+		"Jira Service Desk",
+		"Billing",
+		"Account Management",
+		"Informatica",
+		"Leadership",
+		"Credit Card Processing",
+		"Datacenter",
+	}
+
+	job.SkillDomains = skillDomains
 
 	jobs := Experience{}
 
