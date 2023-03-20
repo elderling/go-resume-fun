@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"time"
 
 	"github.com/go-pdf/fpdf"
@@ -40,6 +41,7 @@ func main() {
 	}
 
 	skills := []string{"Computer Programming", "Software Design", "Leadership", "Mentoring"}
+	sort.Strings(skills)
 
 	job.Skills = skills
 
@@ -57,6 +59,8 @@ func main() {
 	}
 
 	job.SkillDomains = skillDomains
+
+	sort.Strings(job.SkillDomains)
 
 	jobs := Experience{}
 
